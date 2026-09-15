@@ -11,5 +11,5 @@ class CityRepository {
 
     val cities: List<City>
         get() = _cities
-    
+
 }
