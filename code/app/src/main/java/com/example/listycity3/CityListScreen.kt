@@ -1,6 +1,5 @@
 package com.example.listycity3
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +30,7 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun CityListScreen(
-    cities: List<Province>,
+    provinces: List<Province>,
     modifier: Modifier = Modifier,
     onAddCity: (String, String) -> Unit,
     onUpdateCity: (City, String, String, String) -> Unit
@@ -47,7 +46,7 @@ fun CityListScreen(
     var selectedProvince by remember { mutableStateOf("") }
 
     if (showUpdateCityFields) showUpdateCityFields = false
-    for (p in cities) {
+    for (p in provinces) {
         if (p.cities.indexOfFirst { it === selectedCity } >= 0) {
             showUpdateCityFields = true
         }
@@ -150,7 +149,7 @@ fun CityListScreen(
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            itemsIndexed(cities) { idxProv, province ->
+            itemsIndexed(provinces) { idxProv, province ->
                 province.cities.forEachIndexed { idxCity, city ->
                     CityRow(
                         city,
@@ -164,7 +163,7 @@ fun CityListScreen(
                     }
                 }
 
-                if (idxProv < cities.lastIndex) {
+                if (idxProv < provinces.lastIndex) {
                     HorizontalDivider()
                 }
             }

@@ -19,9 +19,9 @@ class MainActivity : ComponentActivity() {
             ListyCity3Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     CityListScreen(
-                        cities = cityRepository.cities,
+                        provinces = cityRepository.cities,
                         modifier = Modifier.padding(innerPadding),
-                        onAddCity = { x, y ->  cityRepository.addCity(city = x, province = y) },
+                        onAddCity = { city, province ->  cityRepository.addCity(city = city, province = province) },
                         onUpdateCity = {
                             city, newCityName, oldProvinceName, newProvinceName ->
                             cityRepository.updateCityProvince(
